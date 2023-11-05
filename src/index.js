@@ -1,6 +1,7 @@
-//https://pixabay.com/api/?key=40435705-6f2aada23a4cf1fc16cb5f62b&q=yellow+flowers&image_type=photo
 import axios from "axios";
 import Notiflix from 'notiflix';
+import SimpleLightbox from "simplelightbox";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const form = document.querySelector(".search-form");
 const input = document.querySelector("input");
@@ -12,10 +13,11 @@ const apiKey = "40435705-6f2aada23a4cf1fc16cb5f62b";
 const apiUrl = "https://pixabay.com/api/";
 var pageNumber = 1
 
+const lightboxGallery = new SimpleLightbox('.gallery a');
 form.addEventListener("submit", onSearch);
 loadMore.addEventListener("click", onMore);
 
-//Notiflix.Notify.success('Sol lucet omnibus');
+
 async function onSearch(e) {
   pageNumber = 1;
   e.preventDefault(); // Не перезавантажувати сторінку після відправки форми
@@ -48,6 +50,7 @@ async function updateUI() {
     //   // always executed
     // });    
     gallery.insertAdjacentHTML("beforeend", generateHtml(response.data));
+    lightboxGallery.refresh();
 
     if (response.data.hits.length === 0) {
       Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
@@ -74,23 +77,26 @@ async function updateUI() {
 function generateHtml(data) {
   let html = "";
   data.hits.forEach(element => {
+    console.log(element);
     html += `<div class="photo-card">
-  <img src="${element.previewURL}" alt="${element.tags}" width=282 height=200 loading="lazy" />
-  <div class="info">
-    <p class="info-item">
-      <b>Likes: </b>${element.likes}
-    </p>
-    <p class="info-item">
-      <b>Views: </b>${element.views}
-    </p>
-    <p class="info-item">
-      <b>Comments: </b>${element.comments}
-    </p>
-    <p class="info-item">
-      <b>Downloads: </b>${element.downloads}
-    </p>
-  </div>
-</div>`
+      <a href="${element.largeImageURL}">
+        <img src="${element.previewURL}" alt="${element.tags}" width=282 height=200 loading="lazy" />
+      </a>
+      <div class="info">
+        <p class="info-item">
+          <b>Likes: </b>${element.likes}
+        </p>
+        <p class="info-item">
+          <b>Views: </b>${element.views}
+        </p>
+        <p class="info-item">
+          <b>Comments: </b>${element.comments}
+        </p>
+        <p class="info-item">
+          <b>Downloads: </b>${element.downloads}
+        </p>
+      </div>
+    </div>`
   });
   return html;
 }
