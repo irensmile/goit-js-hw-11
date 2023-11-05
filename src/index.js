@@ -75,8 +75,8 @@ function generateHtml(data) {
   let html = "";
   data.hits.forEach(element => {
     html += `<div class="photo-card">
-      <a href="${element.largeImageURL}">
-        <img src="${element.previewURL}" alt="${element.tags}" width=282 height=200 loading="lazy" />
+      <a href="${element.largeImageURL}" class="gallery__link">
+        <img src="${element.previewURL}" class="gallery__image" alt="${element.tags}" width=282 height=200 loading="lazy" />
       </a>
       <div class="info">
         <p class="info-item">
