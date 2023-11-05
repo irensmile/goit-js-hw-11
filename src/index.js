@@ -30,7 +30,7 @@ async function onMore(event) {
 async function updateUI() {
   const url = `${apiUrl}?key=${apiKey}&q=${input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${pageNumber}`;
   try {
-    response = await axios.get(url);
+    const response = await axios.get(url);
     // .then(function (response) {
     //   // handle success
     //     console.log(response);
