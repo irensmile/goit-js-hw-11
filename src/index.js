@@ -60,6 +60,7 @@ async function updateUI() {
     }
     else {
       footer.classList.remove('hidden');
+      scrollTwoRows();
       if (pageNumber === 1) {
         Notiflix.Notify.success(`Hooray! We found ${response.data.total} images.`);
       }
@@ -94,4 +95,14 @@ function generateHtml(data) {
     </div>`
   });
   return html;
+}
+
+function scrollTwoRows() {
+  const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: "smooth",
+  });
 }
