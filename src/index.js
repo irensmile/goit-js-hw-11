@@ -38,12 +38,9 @@ async function updateUI() {
   try {
     const response = await axios.get(url);
     // .then(function (response) {
-    //   // handle success
-    //     console.log(response);
-    //     gallery.innerHTML ="qwerty";
+    //     gallery.innerHTML = generateHtml(response.data);
     // })
     // .catch(function (error) {
-    //   // handle error
     //   console.log(error);
     // })
     // .finally(function () {
@@ -64,20 +61,18 @@ async function updateUI() {
     else {
       footer.classList.remove('hidden');
       if (pageNumber === 1) {
-        console.log(response.data);
         Notiflix.Notify.success(`Hooray! We found ${response.data.total} images.`);
       }
     }
   }
   catch (error) {
-    console.log(error);
+    Notiflix.Notify.failure(error);
   }
 }  
 
 function generateHtml(data) {
   let html = "";
   data.hits.forEach(element => {
-    console.log(element);
     html += `<div class="photo-card">
       <a href="${element.largeImageURL}">
         <img src="${element.previewURL}" alt="${element.tags}" width=282 height=200 loading="lazy" />
