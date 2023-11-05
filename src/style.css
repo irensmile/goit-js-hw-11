@@ -9,9 +9,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10;
+    gap: 10px;
     max-width: 1158px;
-    margin: 10 auto;
+    margin: 10px auto;
 }
 .photo-card{
     width: calc((100% - 30px) / 4);
@@ -21,4 +21,23 @@
 }
 .info {
     border: 1px solid gainsboro;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 16px;
+}
+
+.search-form input{
+    font-size: 15px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.search-button {
+    font-size: 15px;
+    color: white;
+    padding: 8px 20px;
+    background-color: chocolate;
+    border-radius: 8px;
 }

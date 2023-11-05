@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 const form = document.querySelector(".search-form");
 const input = document.querySelector("input");
 const gallery = document.querySelector(".gallery");
-const loadMore = document.querySelector(".more");
+const loadMore = document.querySelector("#more");
 const footer = document.querySelector("#footer");
 
 const apiKey = "40435705-6f2aada23a4cf1fc16cb5f62b";
