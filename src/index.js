@@ -60,9 +60,11 @@ async function updateUI() {
     }
     else {
       footer.classList.remove('hidden');
-      scrollTwoRows();
       if (pageNumber === 1) {
         Notiflix.Notify.success(`Hooray! We found ${response.data.total} images.`);
+      }
+      else {
+        scrollTwoRows();
       }
     }
   }
