@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: dodgerblue;
+    padding: 20px 30px;
+}
+.gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10;
+    max-width: 1158px;
+    margin: 10 auto;
+}
+.photo-card{
+    width: calc((100% - 30px) / 4);
+}
+.hidden{
+    display: none;
+}
+.info {
+    border: 1px solid gainsboro;
+}
